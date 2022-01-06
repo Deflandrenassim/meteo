@@ -5,9 +5,15 @@
    </div>
 
    <div class="input-search">
-
-   <input type="search" name="search" id="search" placeholder="Recherche..">
+   <input type="search" class="input" name="search" v-model="recherche" placeholder="Recherche..">
    </div>
+  <div class="container">
+   <div class="date"> {{ recherche }} </div>
+   <div class="temperature"> date aujourdhui   </div>
+   <div class="temperature"> 20 degré  </div>
+   <div>  quel temps </div>
+
+  </div>
 
 
 
@@ -20,7 +26,8 @@ export default {
   data (){
     return{
       hello: 'Hello World',
-      api_key: 'd4235acc5a46cf24a94dfe20005090ba'
+      api_key: 'd4235acc5a46cf24a94dfe20005090ba',
+      recherche: ''
     }
   }
   }
@@ -36,5 +43,6 @@ body{
 .titre{
   text-align: center;
 }
+
 
 </style>
