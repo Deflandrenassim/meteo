@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-    <div class="titre"> {{ hello }} dans notre app Méteo</div>
-    <main>
+    <div class="titre">{{ hello }} dans notre app Méteo</div>
 
     <div class="input-search">
       <input
@@ -13,22 +12,17 @@
         @keypress="fetchWeather"
       />
     </div>
-   
-<div class="container" v-if="typeof weather.main != 'undefined'">
-  <div class="geo">
-    {{ weather.name }}, {{ weather.sys.country}}
-    <div class="temp">
-    {{ Math.round(weather.main.temp)}}
-    </div>
 
-   
+    <div class="container" v-if="typeof weather.main != 'undefined'">
+      <div class="geo">
+        {{ weather.name }}, {{ weather.sys.country }}
+        <div class="temp">
+          {{ Math.round(weather.main.temp) }}
+        </div>
+      </div>
+      <div class="temp"></div>
+    </div>
   </div>
- <div class="temp">
- </div>
-</div>
-
-    </main>
-    </div>
 </template>
 
 <script>
@@ -38,7 +32,7 @@ export default {
     return {
       api_key: "d4235acc5a46cf24a94dfe20005090ba",
       base_url: "https://api.openweathermap.org/data/2.5/",
-      hello: "Hello World", // ma Data du titre
+      hello: "Hello World Welcome ", // ma Data du titre
       recherche: "",
       weather: {},
     };
@@ -62,19 +56,24 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style>
-#app {
+#app{
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  justify-items: center;
+  flex-direction: column;
+  font-size: 50px;
 }
-body {
+body{
   background-color: rgb(0, 179, 179);
-  font-size: 35px;
 }
-.titre {
+.titre{
   text-align: center;
 }
+.input{
+  border-radius:  10px;
+  height: 100%;
+}
+
+
 </style>
