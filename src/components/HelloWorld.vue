@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+  
     <div class="titre">{{ hello }} dans notre app Méteo</div>
 
     <div class="input-search">
@@ -16,11 +17,16 @@
     <div class="container" v-if="typeof weather.main != 'undefined'">
       <div class="geo">
         {{ weather.name }}, {{ weather.sys.country }}
-        <div class="temp">
-          {{ Math.round(weather.main.temp) }}
         </div>
+        
+        <div class="temp">
+          {{ Math.round(weather.main.temp) }} ° D
+        </div>
+      
+      <div class="date"> 
+        {{ dateBuilder() }}
       </div>
-      <div class="temp"></div>
+ 
     </div>
   </div>
 </template>
@@ -52,6 +58,19 @@ export default {
     setResults(results) {
       this.weather = results;
     },
+    dateBuilder() {
+      let d = new Date();
+      let months = ["Janvier", "Février", "Mars", "Avril", "Mai",
+      "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Decembre"];
+      let days = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
+       
+      let day = days[d.getDay()];
+      let date = d.getDate();
+      let month = months[d.getMonth()];
+      let year = d.getFullYear();
+
+      return `${day} ${date} ${month} ${year}`;
+    }
   },
 };
 </script>
@@ -60,19 +79,29 @@ export default {
 <style>
 #app{
   display: flex;
-  justify-content: center;
+  text-align: center;
   flex-direction: column;
   font-size: 50px;
 }
 body{
   background-color: rgb(0, 179, 179);
 }
+
 .titre{
-  text-align: center;
+ display: flex;
+ justify-content: center;
 }
+.input-search{
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+}
+
 .input{
   border-radius:  10px;
-  height: 100%;
+  height: 50px;
+  width: 200px;
+  box-shadow: 10px 5px 5px rgb(255, 196, 196);
 }
 
 
