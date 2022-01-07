@@ -15,18 +15,19 @@
     </div>
 
     <div class="container" v-if="typeof weather.main != 'undefined'">
+
+       <div class="date"> 
+        {{ dateBuilder() }}
+       </div>
+
       <div class="geo">
         {{ weather.name }}, {{ weather.sys.country }}
         </div>
         
         <div class="temp">
-          {{ Math.round(weather.main.temp) }} ° D
+          {{ Math.round(weather.main.temp) }} ° 
         </div>
-      
-      <div class="date"> 
-        {{ dateBuilder() }}
-      </div>
- 
+
     </div>
   </div>
 </template>
@@ -81,12 +82,14 @@ export default {
   display: flex;
   text-align: center;
   flex-direction: column;
-  font-size: 50px;
+  font-size: 40px;
 }
 body{
   background-color: rgb(0, 179, 179);
 }
-
+.container{
+  margin-top: 5rem;
+}
 .titre{
  display: flex;
  justify-content: center;
@@ -98,11 +101,12 @@ body{
 }
 
 .input{
-  border-radius:  10px;
+  border-radius: 10px;
   height: 50px;
   width: 200px;
-  box-shadow: 10px 5px 5px rgb(255, 196, 196);
+  box-shadow: 10px 5px 5px rgb(255, 234, 234);
 }
-
-
+.btn{
+  border-radius: 50%;
+}
 </style>
